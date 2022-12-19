@@ -1,0 +1,11 @@
+@import './variables';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $text-primary;
+}
+html {
+  color: $text-primary;
+  background-color: $bg-secondary;
+}

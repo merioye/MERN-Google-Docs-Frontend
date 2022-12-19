@@ -1,0 +1,16 @@
+@import '../../variables';
+
+.container {
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-wrapper {
+  width: 500px;
+  height: auto;
+  background-color: $bg-primary;
+  border-radius: 10px;
+}
