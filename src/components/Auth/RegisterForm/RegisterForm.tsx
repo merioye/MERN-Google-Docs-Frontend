@@ -4,10 +4,11 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
 
-import InputField from '../../Shared/InputField/InputField'
+import { InputField } from '../../Shared'
 import Profile from '../../../assets/images/profile.png'
 import { authFormVariants } from '../../../animations'
 import { registerSchema } from '../../../validations/auth.validation'
+import { addRippleEffect } from '../../../utils/shared/addRippleEffect.util'
 import './RegisterForm.scss'
 
 const RegisterForm = () => {
@@ -91,7 +92,7 @@ const RegisterForm = () => {
           )}
         </div>
         <div style={{ marginTop: 30 }}>
-          <button type='submit' className='btn-full'>
+          <button type='submit' className='btn-full' onClick={addRippleEffect}>
             Register
           </button>
         </div>

@@ -1,0 +1,90 @@
+@import '../../../variables';
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+  height: 60px;
+  background-color: $bg-primary;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    h2 {
+      font-size: 20px;
+      color: $text-secondary;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      cursor: text;
+    }
+    button {
+      width: 100px;
+      height: 40px;
+      background-color: $bg-secondary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: $bg-secondary-hover;
+      }
+    }
+    h3 {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+    span {
+      border-radius: 50%;
+      padding: 7px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: $bg-secondary-hover;
+      }
+    }
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.doc-icon {
+  color: $blue;
+  fill: $blue;
+  font-size: 30px;
+}
+.search-icon {
+  font-size: 18px;
+  color: $text-secondary;
+  fill: $text-secondary;
+}
+.print-icon {
+  font-size: 25px;
+}
+.doc-title-container {
+  max-width: calc(100% - 110px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media print {
+  nav {
+    display: none;
+  }
+}

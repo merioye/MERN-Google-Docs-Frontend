@@ -1,0 +1,31 @@
+@import '../../../variables';
+
+.create-doc-container {
+  padding: 18px 50px 40px 50px;
+  background-color: $bg-secondary;
+  div {
+    width: 60vw;
+    margin: auto;
+    p {
+      font-size: 18px;
+      color: $text-secondary;
+      padding-bottom: 15px;
+    }
+    h6 {
+      font-size: 15px;
+      font-weight: 600;
+      padding-top: 5px;
+      padding-left: 8px;
+    }
+    img {
+      height: 208px;
+      width: 160px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      &:hover {
+        border-color: $blue;
+      }
+    }
+  }
+}

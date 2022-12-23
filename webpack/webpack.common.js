@@ -12,6 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, '..', './build'),
     filename: 'bundle.js',
     clean: true,
+    publicPath: '/',
     assetModuleFilename: 'images/[hash][ext][query]',
   },
   module: {

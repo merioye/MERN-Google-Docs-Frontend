@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Auth from './pages/Auth/Auth'
+import Document from './pages/Document/Document'
 import Home from './pages/Home/Home'
 
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: '/auth',
         element: <Auth />,
+      },
+      {
+        path: '/doc/:docId',
+        element: <Document />,
       },
     ],
   },

@@ -1,0 +1,20 @@
+@import '../../../variables';
+
+.documents-wrapper {
+  padding: 18px 50px 40px 50px;
+}
+.documents-container {
+  width: 60vw;
+  margin: auto;
+  header {
+    display: grid;
+    grid-template-columns: auto 110px 48px;
+    gap: 150px;
+    margin-bottom: 15px;
+  }
+}
+.folder-icon {
+  fill: $text-secondary;
+  font-size: 22px;
+  width: 100%;
+}

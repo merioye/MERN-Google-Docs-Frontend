@@ -1,0 +1,103 @@
+@import '../../../../../variables';
+
+.document-wrapper {
+  display: grid;
+  grid-template-columns: auto 110px 48px;
+  gap: 150px;
+  margin-top: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 10px 0px;
+  border-radius: 10px;
+  position: relative;
+
+  &:hover {
+    background-color: $blue-light-hover;
+  }
+  div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+
+    h4 {
+      color: $text-secondary;
+    }
+  }
+  p {
+    color: $text-secondary;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    height: 100%;
+    transition: all 0.3s ease;
+    &:hover .option-icon {
+      fill: $blue;
+    }
+  }
+}
+.doc-icon {
+  font-size: 25px;
+  fill: $blue;
+}
+.option-icon {
+  fill: $text-secondary;
+}
+
+.doc-options {
+  background-color: $bg-primary;
+  padding: 10px;
+  position: absolute;
+  bottom: 83%;
+  right: 0px;
+  box-shadow: $box-shadow;
+  border-radius: 10px;
+  ul {
+    list-style-type: none;
+    position: relative;
+    z-index: 100;
+    li {
+      padding: 15px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      &:hover {
+        color: white;
+      }
+      &:hover .option-action-icon {
+        fill: white;
+      }
+    }
+  }
+}
+
+.option1 {
+  &:hover {
+    background-color: $red;
+  }
+}
+.option2 {
+  &:hover {
+    background-color: $blue;
+  }
+}
+.option-action-icon {
+  font-size: 20px;
+  &:hover {
+    fill: white;
+  }
+}
+.del-option-icon {
+  margin-left: -4px;
+}

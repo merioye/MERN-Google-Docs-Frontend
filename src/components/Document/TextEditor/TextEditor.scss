@@ -1,0 +1,32 @@
+@import '../../../variables';
+
+.toolbar {
+  border-width: 0px;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.editor {
+  background-color: $bg-primary;
+  width: 60vw;
+  min-height: 1024px;
+  margin: 24px auto;
+  padding: 20px 40px;
+  box-shadow: $box-shadow;
+  border-radius: 5px;
+}
+
+@media print {
+  .toolbar {
+    display: none;
+  }
+  .editor {
+    margin: 0px auto;
+    box-shadow: none;
+    display: block;
+    width: 100vw;
+    padding: 0px;
+  }
+}
