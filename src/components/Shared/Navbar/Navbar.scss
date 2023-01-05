@@ -60,6 +60,21 @@ nav {
       width: 40px;
       border-radius: 50%;
     }
+    .spinner {
+      animation-name: spin;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-duration: 1s;
+      cursor: initial;
+    }
+    @keyframes spin {
+      from {
+        rotate: 0deg;
+      }
+      to {
+        rotate: 360deg;
+      }
+    }
   }
 }
 
@@ -77,14 +92,42 @@ nav {
   font-size: 25px;
 }
 .doc-title-container {
-  max-width: calc(100% - 110px);
+  max-width: calc(100% - 210px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.save-btn {
+  background-color: $blue;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  &:hover {
+    background-color: $blue-hover;
+  }
 }
 
 @media print {
   nav {
     display: none;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-md) {
+  nav {
+    padding: 20px;
+  }
+}
+@media only screen and (max-width: $breakpoint-sm) {
+  nav div {
+    button {
+      width: 70px;
+    }
+    h3 {
+      display: none;
+    }
+  }
+  .doc-title-container {
+    max-width: calc(100% - 180px);
   }
 }

@@ -2,7 +2,7 @@
 
 .document-wrapper {
   display: grid;
-  grid-template-columns: auto 110px 48px;
+  grid-template-columns: calc(100% - 458px) 110px 48px;
   gap: 150px;
   margin-top: 5px;
   transition: all 0.3s ease;
@@ -20,9 +20,11 @@
     align-items: center;
     justify-content: flex-start;
     padding-left: 10px;
-
     h4 {
       color: $text-secondary;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   p {
@@ -47,6 +49,7 @@
 .doc-icon {
   font-size: 25px;
   fill: $blue;
+  flex: none;
 }
 .option-icon {
   fill: $text-secondary;
@@ -100,4 +103,29 @@
 }
 .del-option-icon {
   margin-left: -4px;
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  .document-wrapper {
+    grid-template-columns: calc(100% - 258px) 110px 48px;
+    gap: 50px;
+  }
+}
+@media only screen and (max-width: $breakpoint-md) {
+  .document-wrapper {
+    gap: 30px;
+    grid-template-columns: calc(100% - 218px) 110px 48px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 0px;
+    div {
+      padding-left: 0px;
+    }
+    p {
+      margin-left: -20px;
+    }
+  }
+  .even-doc {
+    background-color: $bg-secondary;
+  }
 }

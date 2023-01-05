@@ -29,3 +29,18 @@
     }
   }
 }
+
+@media only screen and (max-width: $breakpoint-lg) {
+  .create-doc-container div {
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: $breakpoint-md) {
+  .create-doc-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    div {
+      width: 100%;
+    }
+  }
+}

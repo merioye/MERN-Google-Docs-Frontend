@@ -2,23 +2,40 @@ import { MdOutlineLockOpen, MdOutlineEmail } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useMutation } from '@apollo/client'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import { InputField } from '../../Shared'
 import { authFormVariants } from '../../../animations'
 import { loginSchema } from '../../../validations/auth.validation'
 import { addRippleEffect } from '../../../utils/shared/addRippleEffect.util'
+import { LoginFormInput } from '../../../types/form.types'
+import { LOGIN } from '../../../graphql/mutations/user.mutations'
+import { LoginData, LoginVars } from '../../../types/useMutation.types'
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<LoginFormInput>({
     resolver: yupResolver(loginSchema),
   })
 
-  const onSubmit = (data: any) => {
-    console.log(data)
+  const navigate = useNavigate()
+
+  const [loginUser, { loading }] = useMutation<LoginData, LoginVars>(LOGIN, {
+    onError: (error) => {
+      toast.error(error.message)
+    },
+    onCompleted: () => {
+      navigate('/')
+    },
+  })
+
+  const onSubmit = (data: LoginFormInput) => {
+    loginUser({ variables: { ...data } })
   }
   return (
     <motion.div
@@ -49,8 +66,8 @@ const LoginForm = () => {
           />
         </div>
         <div style={{ marginTop: 30 }}>
-          <button type='submit' className='btn-full' onClick={addRippleEffect}>
-            Login
+          <button type='submit' className='btn-full' onClick={addRippleEffect} disabled={loading}>
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </div>
       </form>

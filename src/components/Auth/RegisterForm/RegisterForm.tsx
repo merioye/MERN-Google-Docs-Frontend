@@ -3,23 +3,43 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
+import { useMutation } from '@apollo/client'
+import { toast } from 'react-hot-toast'
 
 import { InputField } from '../../Shared'
 import Profile from '../../../assets/images/profile.png'
 import { authFormVariants } from '../../../animations'
 import { registerSchema } from '../../../validations/auth.validation'
 import { addRippleEffect } from '../../../utils/shared/addRippleEffect.util'
+import { CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET } from '../../../config/constants'
+import { REGISTER } from '../../../graphql/mutations/user.mutations'
+import { RegisterFormInput } from '../../../types/form.types'
+import { RegisterData, RegisterVars } from '../../../types/useMutation.types'
 import './RegisterForm.scss'
 
-const RegisterForm = () => {
+type IProps = {
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>
+}
+const RegisterForm = ({ setActiveTab }: IProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<RegisterFormInput>({
     resolver: yupResolver(registerSchema),
   })
   const [imagePreview, setImagePreview] = useState<null | string>(null)
+  const [isUploadingImage, setIsUploadingImage] = useState(false)
+
+  const [registerUser, { loading }] = useMutation<RegisterData, RegisterVars>(REGISTER, {
+    onError: (error) => {
+      toast.error(error.message)
+    },
+    onCompleted: (data) => {
+      toast.success(data.register.message)
+      setActiveTab('login')
+    },
+  })
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || !e.target.files[0]) {
@@ -34,8 +54,28 @@ const RegisterForm = () => {
     }
   }
 
-  const onSubmit = (data: any) => {
-    console.log(data)
+  const onSubmit = async (data: RegisterFormInput) => {
+    setIsUploadingImage(true)
+    const { name, email, password, profile } = data
+    try {
+      const formData = new FormData()
+      formData.append('file', profile[0])
+      formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+        {
+          method: 'POST',
+          body: formData,
+        },
+      )
+      const { secure_url } = await res.json()
+      setIsUploadingImage(false)
+      registerUser({ variables: { name, email, password, profile: secure_url as string } })
+    } catch (e) {
+      console.log(e)
+      setIsUploadingImage(false)
+      toast.error('Oops! something went wrong')
+    }
   }
   return (
     <motion.div
@@ -92,8 +132,13 @@ const RegisterForm = () => {
           )}
         </div>
         <div style={{ marginTop: 30 }}>
-          <button type='submit' className='btn-full' onClick={addRippleEffect}>
-            Register
+          <button
+            type='submit'
+            className='btn-full'
+            onClick={addRippleEffect}
+            disabled={isUploadingImage || loading}
+          >
+            {isUploadingImage || loading ? 'Registering...' : 'Register'}
           </button>
         </div>
       </form>

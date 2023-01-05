@@ -7,10 +7,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 50px 0px;
 }
 .form-wrapper {
   width: 500px;
   height: auto;
   background-color: $bg-primary;
   border-radius: 10px;
+}
+
+@media only screen and (max-width: $breakpoint-md) {
+  .form-container {
+    padding: 0px;
+  }
+  .form-wrapper {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    border-radius: 0px;
+  }
 }

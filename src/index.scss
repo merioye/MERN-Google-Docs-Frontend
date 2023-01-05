@@ -4,6 +4,11 @@
 button {
   position: relative;
   overflow: hidden;
+  &:disabled {
+    background-color: rgb(165, 165, 167) !important;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
 }
 
 // button ripple effect style
@@ -56,4 +61,15 @@ span.ripple {
 .link {
   text-decoration: none;
   color: $text-primary;
+}
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  img {
+    height: 350px;
+    width: 350px;
+  }
 }

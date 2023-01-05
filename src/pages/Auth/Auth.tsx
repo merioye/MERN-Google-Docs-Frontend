@@ -11,7 +11,7 @@ const Auth = () => {
     <div className='form-container'>
       <div className='form-wrapper'>
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        {activeTab === 'register' ? <RegisterForm /> : <LoginForm />}
+        {activeTab === 'register' ? <RegisterForm setActiveTab={setActiveTab} /> : <LoginForm />}
       </div>
     </div>
   )

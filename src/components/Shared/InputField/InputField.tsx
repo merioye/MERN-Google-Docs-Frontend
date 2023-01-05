@@ -1,12 +1,15 @@
-import { UseFormRegister, FieldValues, FieldErrorsImpl } from 'react-hook-form/dist/types'
+import { UseFormRegister, FieldErrorsImpl } from 'react-hook-form/dist/types'
+import { LoginFormInput, ModalFormInput, RegisterFormInput } from '../../../types/form.types'
 
 import './InputField.scss'
 
+type Name = 'name' | 'email' | 'password' | 'profile' | 'modalInput'
+type Register = UseFormRegister<RegisterFormInput | LoginFormInput | ModalFormInput>
 type IProps = {
-  name: string
+  name: Name
   type: string
   placeholder: string
-  register: UseFormRegister<FieldValues>
+  register: Register
   errors: Partial<
     FieldErrorsImpl<{
       [x: string]: any

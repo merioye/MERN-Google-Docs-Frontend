@@ -18,3 +18,40 @@
   font-size: 22px;
   width: 100%;
 }
+.empty-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  img {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  .documents-container {
+    width: 80vw;
+    header {
+      gap: 50px;
+    }
+  }
+}
+@media only screen and (max-width: $breakpoint-md) {
+  .documents-wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .documents-container {
+    width: 100%;
+    header {
+      gap: 30px;
+      padding: 0px 20px;
+    }
+  }
+}
+@media only screen and (max-width: $breakpoint-sm) {
+  .documents-container header h3 {
+    font-size: 15px;
+  }
+}
