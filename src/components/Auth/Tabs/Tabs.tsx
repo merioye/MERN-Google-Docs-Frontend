@@ -1,4 +1,4 @@
-import './tabs.scss'
+import './Tabs.scss'
 import { motion } from 'framer-motion'
 
 type IProps = {
